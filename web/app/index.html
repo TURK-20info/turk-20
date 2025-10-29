@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TURK-20 DApp Portalı</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/TURK-20info/assets/main/logo.png" />
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #8b0000, #300000);
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header { padding: 20px; font-size: 24px; font-weight: bold; }
+    section { margin: 30px auto; max-width: 480px; background: #1a1a1a; border-radius: 12px; padding: 20px; box-shadow: 0 0 15px rgba(255,0,0,0.2); }
+    button {
+      background: #b30000; color: white; border: none; border-radius: 8px;
+      padding: 12px 20px; font-size: 16px; cursor: pointer; margin-top: 10px;
+    }
+    button:hover { background: #e60000; }
+    input {
+      width: 90%; padding: 10px; border: 1px solid #555; border-radius: 8px;
+      margin-top: 8px; font-size: 16px;
+    }
+    footer { margin: 40px 0 20px; font-size: 12px; opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <header>🇹🇷 TURK-20 Blockchain Portalı</header>
+
+  <section>
+    <h2>🔗 Cüzdan Bağla</h2>
+    <button id="connectBtn">MetaMask Bağla</button>
+    <p id="walletAddr">Bağlı Değil</p>
+  </section>
+
+  <section>
+    <h2>🎟️ Lisans Durumu</h2>
+    <p id="licenseStatus">Kontrol ediliyor...</p>
+    <button id="buyLicenseBtn">10 eTURK Lisans Al</button>
+  </section>
+
+  <section>
+    <h2>🆔 TC Alias Kaydı</h2>
+    <input id="aliasInput" placeholder="örnek: TC12345678" />
+    <button id="registerAliasBtn">Alias Kaydet</button>
+  </section>
+
+  <section>
+    <h2>⚡ Gas’sız İşlem Gönder</h2>
+    <input id="txTo" placeholder="Alıcı Adres (0x...)" />
+    <input id="txAmount" placeholder="Miktar (TURK)" />
+    <button id="sendFreeTxBtn">Gönder</button>
+    <p id="txResult"></p>
+  </section>
+
+  <footer>© 2025 TURK-20 Ağı | Şeffaf ve Güvenli Ekosistem</footer>
+
+  <script type="module">
+    import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@6.13.1/dist/ethers.min.js";
+
+    let provider, signer, userAddr;
+
+    async function connectWallet() {
+      if (!window.ethereum) return alert("MetaMask gerekli");
+      provider = new ethers.BrowserProvider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      signer = await provider.getSigner();
+      userAddr = await signer.getAddress();
+      document.getElementById("walletAddr").innerText = userAddr;
+      checkLicense();
+    }
+
+    async function checkLicense() {
+      // Placeholder – gerçek kontrat bağlantısı Adım 2’de eklenecek
+      document.getElementById("licenseStatus").innerText = "FREE Lisans (aktif)";
+    }
+
+    async function buyLicense() {
+      alert("Bu buton köprü (BridgeListener) ile eTURK→TURK dönüşümünü başlatacak. Adım 2’de aktif olacak.");
+    }
+
+    async function registerAlias() {
+      const alias = document.getElementById("aliasInput").value;
+      alert(`Alias kaydı isteği gönderilecek: ${alias}`);
+    }
+
+    async function sendFreeTx() {
+      const to = document.getElementById("txTo").value;
+      const amount = document.getElementById("txAmount").value;
+      document.getElementById("txResult").innerText = `Gas’sız işlem denemesi: ${amount} TURK → ${to}`;
+    }
+
+    document.getElementById("connectBtn").onclick = connectWallet;
+    document.getElementById("buyLicenseBtn").onclick = buyLicense;
+    document.getElementById("registerAliasBtn").onclick = registerAlias;
+    document.getElementById("sendFreeTxBtn").onclick = sendFreeTx;
+  </script>
+</body>
+</html>
