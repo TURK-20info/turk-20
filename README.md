@@ -1,16 +1,35 @@
-# TURK-20 Blockchain Ağı 🩸
+# 🇹🇷 TurkChain — Cosmos SDK & EVM Powered Blockchain
 
-TURK-20 ağı; EVM uyumlu, şeffaf, güvenli ve gas-sponsor (lisans) modeline sahip
-yerli blokzincir ağıdır.
+TurkChain is an open-source blockchain project based in Türkiye,  
+built using the **Cosmos SDK** framework.  
+With **EVM (Ethereum Virtual Machine)** support, it provides full compatibility with  
+smart contracts, DeFi protocols, and modern web3 infrastructures.
 
-## Ana Modüller
-- **StakeManager.sol** — 10 / 100 / 1000 TURK stake = Free / Pro / Node lisans
-- **FeeManager.sol** — Günlük ücretsiz işlem kotası
-- **GasSponsor.sol** — FeePool (sponsor gas sistemi)
-- **NameRegistry.sol** — TC alias kayıt sistemi
-- **BridgeGate.sol** — eTURK ↔ TURK köprü
-- **Relayer & BridgeListener** — zincirler arası köprü ve sponsor işlemler
-- **DEX** — tam şeffaflık, likidite yönetimi, FeePool beslemesi
+---
 
-Her işlem zincir üstünde izlenebilir; 
-FeePool ve likidite hareketleri blok explorer’da herkes tarafından görülebilir.
+## 🌍 Features
+- ⚙️ Modular architecture powered by Cosmos SDK  
+- 💎 EVM layer integration (independent from Evmos)  
+- 🔐 Proof-of-Stake consensus via CometBFT  
+- 🌐 JSON-RPC support (ports 8545 / 8546)  
+- 📡 REST API (port 1317)  
+- 🧠 Built for the Turkish developer community  
+
+---
+
+## 🧩 Technologies
+| Layer | Technology |
+|--------|-------------|
+| Core | Cosmos SDK v0.53.4 |
+| Consensus | CometBFT |
+| EVM | TurkEVM Module |
+| Frontend | Vue.js + Ignite UI |
+| Language | Golang 1.23+ |
+
+---
+
+## 🚀 Getting Started
+```bash
+git clone https://github.com/TURK-20info/turkchain
+cd turkchain
+ignite chain serve
